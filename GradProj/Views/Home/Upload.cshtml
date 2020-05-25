@@ -1,0 +1,155 @@
+﻿@{ ViewBag.Title = "Upload"; }
+
+<h2>New Upload</h2>
+<br />
+
+<div class="dropzone">
+    <form action="" method="post" enctype="multipart/form-data">
+        <label for="file">Select a file:</label><br />
+        <input type="file" name="file" id="file" /><br />
+        <input type="submit" value="Upload"/>
+    </form>
+</div>
+
+<div class="warning">
+    <div class="alert alert-dismissible alert-warning">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <h4>Warning!</h4>
+        <p>1. The variable names must consist of 3 or more letters.</p>
+        <p>2. There should be a comment (//classified) for the important variables</p>
+        <p>3. The uploaded file should be a .cs file.</p>
+    </div>
+</div>
+
+@*<div class="dropzone">
+    <form>
+        <label for="myfile">Select a file or drag a file:</label>
+        <input type="file" class=" btn-default"><br>
+        <input type="submit" value="Upload" class="btn btn-info">
+
+    </form>
+</div>*@
+
+<style>
+    .warning {
+        padding-top: 30px;
+    }
+
+    .dropzone {
+        margin: 15px;
+        height: 400px;
+        width: 400px;
+        border: 2px dashed #ccc;
+        color: #a5a5a5;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        transition: 0.2s ease-in-out;
+    }
+
+        .dropzone:hover {
+            color: #2e2e2e;
+            border-color: #646464;
+        }
+
+    .hover {
+        color: #2e2e2e;
+        border-color: #646464;
+    }
+
+    .validFile {
+        background: #02a741;
+        color: #fff;
+        border: 0;
+        border-radius: 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    }
+
+    .invalidFile {
+        background: #e25731;
+        border-radius: 4px;
+        color: #fff;
+        border: 0;
+    }
+
+    .uploadBtn {
+        text-decoration: none;
+        background: #068838;
+        color: white;
+        margin-top: 16px;
+        padding: 8px 20px;
+        border-radius: 5px;
+        border: 0;
+        font-weight: 400;
+        font-size: 0.8em;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+        transition: all 0.2s ease-in-out;
+        outline: 0;
+    }
+
+        .uploadBtn:hover {
+            cursor: pointer;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+        }
+</style>
+
+@section Scripts{
+    <script>
+
+       
+        const dropzone = document.querySelector('.dropzone');
+
+        // Hover the zone
+        dropzone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropzone.setAttribute('class', 'dropzone hover');
+            dropzone.innerText = 'Drop a file here to upload';
+        });
+
+        // Leave the zone
+        dropzone.addEventListener('dragleave', () => {
+            dropzone.classList.remove('hover');
+        });
+
+        // Drop
+        dropzone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            const file = e.dataTransfer.files[0];
+            // Test if valid file
+            const fileRegex = /\.(cs)$/i;
+            if (!fileRegex.test(file.name)) {
+                dropzone.innerText = 'Invalid file format. Please drop a valid file.';
+                dropzone.setAttribute('class', 'dropzone invalidFile');
+                return false;
+            }
+            return uploadFile(file);
+        });
+
+        // Upload valid file
+        const uploadFile = (file) => {
+
+            dropzone.innerText = "Added '" + file.name + "'";
+            dropzone.setAttribute('class', 'dropzone validFile');
+
+            const btn = document.createElement('button');
+            btn.classList.add('uploadBtn');
+            btn.innerText = 'Upload';
+            dropzone.appendChild(btn);
+
+
+            btn.addEventListener('click', () => {
+                dropzone.innerHTML = 'Uploaded! ';
+                var url = '@Html.Raw(Url.Action("UploadResult"))';
+                window.location.href = url;
+
+
+
+            });
+
+
+
+        };
+    </script>
+
+}
