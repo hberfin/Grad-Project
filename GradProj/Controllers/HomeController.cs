@@ -16,7 +16,10 @@ namespace GradProj.Controllers
         {
             return View();
         }
-
+        public ActionResult CreateAssignment()
+        {
+            return View();
+        }
         public ActionResult Upload()
         {
             ViewBag.Message = "Upload your files.";

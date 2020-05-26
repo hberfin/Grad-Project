@@ -1,0 +1,50 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <div class="createAssignment">
+        <form class="form-horizontal">
+            <fieldset>
+                <legend>Create Assignment</legend>
+                <div class="form-group">
+                    <label for="inputTeacherName" class="col-lg-2 control-label">Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputTeacherName" placeholder="Name">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputAssignmentName" class="col-lg-2 control-label">Assignment Name</label>
+                    <div class="col-lg-10">
+                        <input type="text" class="form-control" id="inputAssignmentName" placeholder="Assignment Name">
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="col-lg-2 control-label">Textarea</label>
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="10" id="textArea" placeholder="Information about the assignment"></textarea>
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2">
+                        <button type="reset" class="btn btn-default">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+
+<style>
+    .createAssignment{
+        padding-top:30px;
+     
+
+    }
+
+   /* .form-horizontal {
+        margin: 0 auto;
+    }*/
+</style>
