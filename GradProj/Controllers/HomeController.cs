@@ -29,7 +29,7 @@ namespace GradProj.Controllers
         {
             if (file != null && file.ContentLength > 0)
             {
-                var path = Path.Combine("C:\\Users\\User\\Desktop\\dsşlfksdşfk\\Metrics\\", "Assignment.txt");
+                var path = Path.Combine("C:\\Users\\User\\Desktop\\Grad Project\\Metrics\\", "Assignment.txt");
                 file.SaveAs(path);
             }
 
