@@ -1673,7 +1673,7 @@ namespace Metrics
         public static void Main()
         {
             string readContents;
-            using (StreamReader streamReader = new StreamReader("C:\\Users\\User\\Desktop\\Grad Project\\Metrics\\Assignment.txt", Encoding.UTF8)) //Öğrenci ödevini okuma kısmı
+            using (StreamReader streamReader = new StreamReader("C:\\Users\\User\\Desktop\\Grad Project\\Metrics\\Assignment.cs", Encoding.UTF8)) //Öğrenci ödevini okuma kısmı
             {
                 readContents = streamReader.ReadToEnd();
             }
